@@ -1,0 +1,22 @@
+---
+version: '3'
+services: 
+ webserver: 
+  image: jenkins
+  ports: 
+   - 50001:50000
+
+ appserver1: 
+   image: tomcat
+   ports: 
+    - 50002:8080
+   links: 
+    - webserver:webserver
+
+ appserver2: 
+    image: tomcat
+    ports: 
+     - 50003:8080
+    links: 
+     - webserver:webserver
+...   

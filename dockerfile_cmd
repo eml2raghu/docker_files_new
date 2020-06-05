@@ -1,0 +1,4 @@
+FROM centos
+MAINTAINER Raghu
+CMD ["date"]
+CMD ["ls", "-la"]

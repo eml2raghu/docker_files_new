@@ -1,0 +1,4 @@
+FROM ubuntu
+MAINTAINER Raghu
+
+ADD http://mirrors.jenkins.io/war-stable/latest/jenkins.war /tmp

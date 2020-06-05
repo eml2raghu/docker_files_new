@@ -1,0 +1,23 @@
+#Run the below line first on docker host before running docker file to create an imate
+##RUN wget https://downloads.apache.org/tomcat/tomcat-8/v8.5.55/bin/apache-tomcat-8.5.55.tar.gz
+
+FROM centos:centos6
+MAINTAINER lreeder 
+
+RUN yum -y install sudo
+RUN yum install java -y
+RUN echo "JAVA_HOME=/usr/" >> /etc/environment
+
+
+ADD apache-tomcat-8.5.55.tar.gz /usr/share
+WORKDIR /usr/share/
+RUN mv  apache-tomcat-8.5.55 tomcat7
+
+RUN groupadd tomcat
+RUN useradd -s /bin/bash -g tomcat tomcat
+RUN chown -Rf tomcat.tomcat /usr/share/tomcat7
+EXPOSE 8080
+CMD ["/usr/share/tomcat7/bin/catalina.sh", "run"]
+
+
+

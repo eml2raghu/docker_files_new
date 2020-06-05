@@ -1,0 +1,19 @@
+---
+version: '3'
+services: 
+ mydb: 
+  image: mysql:5
+  environment: 
+   MYSQL_ROOT_PASSWORD: intelliq
+ apache: 
+  image: httpd
+  ports: 
+   - 7070:80
+  links: 
+   - mydb:mydb
+ php: 
+  image: php:7.2-apache
+  links: 
+   - mydb:mydb
+   - apache:apache
+...

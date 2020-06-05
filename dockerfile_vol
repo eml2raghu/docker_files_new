@@ -1,0 +1,7 @@
+FROM ubuntu
+MAINTAINER Raghu
+
+RUN apt-get update
+RUN apt-get install -y git
+VOLUME /raghu_vol1
+

@@ -1,0 +1,19 @@
+---
+version: '3'
+services: 
+ mydb: 
+  image: mysql:5
+  environment: 
+   MYSQL_ROOT_PASSWORD: intelliqit
+ myhttpd: 
+  image: httpd
+  ports: 
+   - 8081:80
+  links: 
+   - mydb:mydb
+ myphp: 
+  image: php:7.2-apache
+  links: 
+   - mydb:mydb
+   - myhttpd:myhttpd 
+...
